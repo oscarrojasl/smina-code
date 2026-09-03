@@ -5,3 +5,8 @@ build-cmake
 
 # macos
 .DS_Store
+
+# cmake build trees
+build/
+cmake-build-debug/
+cmake-build-release/
