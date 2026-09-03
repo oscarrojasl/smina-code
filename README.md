@@ -1,36 +1,35 @@
-======================================================================
-smina -- modernized build
-======================================================================
+# smina — modernized build
 
-This repository is a fork of smina (https://sourceforge.net/projects/smina/),
-which is itself a fork of AutoDock Vina 1.1.2 (http://vina.scripps.edu/).
+This repository is a fork of [smina](https://sourceforge.net/projects/smina/),
+which is itself a fork of [AutoDock Vina 1.1.2](http://vina.scripps.edu/).
 
 Original smina targeted an old stack that no longer configures or compiles
 against current compilers and libraries. This fork brings the build up to a
-current toolchain -- on modern macOS as well as on current Linux -- while leaving
-the docking and scoring code untouched. There are no functional changes: results are the same
-as original smina.
+current toolchain -- on modern macOS as well as on current Linux -- while
+leaving the docking and scoring code untouched.
 
-All four targets (smina, server, fromsmina, tosmina) build clean from a clean
-install of macOS Tahoe 26.6.2, of Fedora 44, and of Ubuntu 26 LTS; see below
-for the packages each needs.
+**There are no functional changes: results are the same as original smina.**
 
-This is an UNOFFICIAL fork.  It is not affiliated with, endorsed by, or
-supported by The Scripps Research Institute, the University of Pittsburgh,
-or the authors of smina or AutoDock Vina.  Please report problems with this
-fork here, not to the upstream projects.
+All four targets (`smina`, `server`, `fromsmina`, `tosmina`) build clean from a
+clean install of macOS Tahoe 26.6.2, of Fedora 44, and of Ubuntu 26 LTS; see
+below for the packages each needs.
+
+This is an **UNOFFICIAL** fork. It is not affiliated with, endorsed by, or
+supported by The Scripps Research Institute, the University of Pittsburgh, or
+the authors of smina or AutoDock Vina. Please report problems with this fork
+here, not to the upstream projects.
 
 If you use smina, please cite the original paper:
-http://pubs.acs.org/doi/abs/10.1021/ci300604z
+<http://pubs.acs.org/doi/abs/10.1021/ci300604z>
 
 No pre-built binaries are distributed here -- build from source as described
 below.
 
 
-Building on Linux
------------------
-Verified on a clean Fedora 44 install with the @development-tools and
-@c-development groups.  On top of those, the required packages are:
+## Building on Linux
+
+Verified on a clean Fedora 44 install with the `@development-tools` and
+`@c-development` groups. On top of those, the required packages are:
 
 ```
 dnf install cmake boost boost-devel eigen3 openbabel openbabel-devel
@@ -53,21 +52,21 @@ On Debian and Ubuntu the equivalent packages are:
 apt install git cmake build-essential libboost-all-dev libopenbabel-dev libeigen3-dev
 ```
 
-Verified on a clean Ubuntu 26 LTS install with build-essential already
+Verified on a clean Ubuntu 26 LTS install with `build-essential` already
 present.
 
 
-Building on macOS
------------------
+## Building on macOS
+
 Verified on a clean macOS Tahoe 26.6.2 install with the Xcode command line
-tools and Homebrew.  The required Homebrew packages are:
+tools and Homebrew. The required Homebrew packages are:
 
 ```
 brew install cmake boost eigen open-babel
 ```
 
-(cmake, boost, eigen and open-babel are the only ones needed; everything else
-comes from the Xcode command line tools.)
+(`cmake`, `boost`, `eigen` and `open-babel` are the only ones needed;
+everything else comes from the Xcode command line tools.)
 
 Then:
 
@@ -80,48 +79,52 @@ cmake --build . -j"$(sysctl -n hw.ncpu)"
 ./smina --version
 ```
 
-*Note:* OpenBabel3 is required -- Open Babel 2 will not work.  Eigen is no
-longer vendored, so a system Eigen must be installed, and the compiler must
-support C++17.  On distributions old enough to ship neither, original smina is
-the better starting point.
+> **Note:** OpenBabel3 is required -- Open Babel 2 will not work. Eigen is no
+> longer vendored, so a system Eigen must be installed, and the compiler must
+> support C++17. On distributions old enough to ship neither, original smina is
+> the better starting point.
 
-License
--------
+
+## License
+
 smina is a combination of Apache-2.0 code (the AutoDock Vina core, (c) The
-Scripps Research Institute), GPLv2 code (PDBQTUtilities, derived from Open
-Babel), and NCSA-licensed code (CommandLine2, adapted from LLVM), and it links
-against Open Babel 3 (GPLv2).  The work as a whole is therefore distributed
-under the GNU General Public License version 2 -- see LICENSE.
+Scripps Research Institute), GPLv2 code (`PDBQTUtilities`, derived from Open
+Babel), and NCSA-licensed code (`CommandLine2`, adapted from LLVM), and it
+links against Open Babel 3 (GPLv2). The work as a whole is therefore
+distributed under the GNU General Public License version 2 -- see
+[`LICENSE`](LICENSE).
 
-LICENSING.md has the full component-by-component breakdown, the third-party
-license files, and the list of every file this fork modifies.
+[`LICENSING.md`](LICENSING.md) has the full component-by-component breakdown,
+the third-party license files, and the list of every file this fork modifies.
 
 
-======================================================================
-Original smina README follows.
-======================================================================
+---
+
+
+# Original smina README follows
 
 smina is a fork of Autodock Vina (http://vina.scripps.edu/) that
 focuses on improving scoring and minimization.  Changes from the
 standard Vina (version 1.1.2) include:
- -comprehensive support for ligand molecular formats (via OpenBabel)*
- -support for multi-ligand files (e.g., an sdf file)*
- -support for addition term types (e.g., desolvation, electrostatics)
- -support for custom, user-parameterized scoring functions (see --custom_scoring)
- -automatic box creation based on a user-specified bound ligand
- -allow the output of more than 20 docking poses
- -vastly improved minimization algorithms (--minimize goes to convergence)
- -*experimental* easily define flexible residues of receptor (--flexres and --flexdist)
- 
-For workflows where AutoDock Vina is used for minimization (local_only) 
-as opposed to of docking, these changes make Vina much easer to use and 
-10-20x faster. Docking performance is about the same since partial charge 
+
+- comprehensive support for ligand molecular formats (via OpenBabel)\*
+- support for multi-ligand files (e.g., an sdf file)\*
+- support for addition term types (e.g., desolvation, electrostatics)
+- support for custom, user-parameterized scoring functions (see `--custom_scoring`)
+- automatic box creation based on a user-specified bound ligand
+- allow the output of more than 20 docking poses
+- vastly improved minimization algorithms (`--minimize` goes to convergence)
+- *experimental* easily define flexible residues of receptor (`--flexres` and `--flexdist`)
+
+For workflows where AutoDock Vina is used for minimization (local_only)
+as opposed to of docking, these changes make Vina much easer to use and
+10-20x faster. Docking performance is about the same since partial charge
 calculation and file i/o isn't such a big part of the performance.
 
-If you find smina useful, please cite our paper: 
-http://pubs.acs.org/doi/abs/10.1021/ci300604z
+If you find smina useful, please cite our paper:
+<http://pubs.acs.org/doi/abs/10.1021/ci300604z>
 
-*Non-pdbqt ligand files must have partial charges added.  This is done
+\*Non-pdbqt ligand files must have partial charges added.  This is done
 using OpenBabel and will get different results than the prepare_ligand4.py
 script that comes with AutoDock Tools.
 
@@ -131,6 +134,7 @@ in case these dependencies cannot be met (however, it probably still will
 not work if the kernel is older than 2.6.24).
 
 If building from source:
+
 ```
 apt install git libboost-all-dev libopenbabel-dev build-essential libeigen3-dev
 git clone https://git.code.sf.net/p/smina/code smina-code
@@ -141,8 +145,12 @@ cmake ..
 make -j12
 ```
 
-*Note:*  OpenBabel3 is required.
+> **Note:** OpenBabel3 is required.
 
+
+## Options
+
+```
 Input:
   -r [ --receptor ] arg rigid part of the receptor 
   --flex arg            flexible side chains, if any 
@@ -223,18 +231,19 @@ Information (optional):
   --help                display usage summary
   --help_hidden         display usage summary with hidden options
   --version             display program version
+```
 
 
-
-
-
+## Custom scoring
 
 The custom scoring file consists of a weight, term description, and optional
-comments on each line.  The numeric parameters of the term description 
-can be varied to parameterize the scoring function.  
-Use --print_terms to see all available terms.
+comments on each line.  The numeric parameters of the term description
+can be varied to parameterize the scoring function.
+Use `--print_terms` to see all available terms.
 
 Example (all weights 1.0, all term types listed):
+
+```
 1.0  ad4_solvation(d-sigma=3.6,_s/q=0.01097,_c=8)  desolvation, q determines whether value is charge dependent
 1.0  ad4_solvation(d-sigma=3.6,_s/q=0.01097,_c=8)  in all terms, c is a distance cutoff
 1.0  electrostatic(i=1,_^=100,_c=8)	i is the exponent of the distance, see everything.h for details
@@ -259,23 +268,29 @@ Example (all weights 1.0, all term types listed):
 1.0  num_tors_sqrt
 1.0  num_hydrophobic_atoms
 1.0  ligand_length
+```
 
 
-Atom Type Terms
+### Atom Type Terms
+
 You can define custom functionals between pairs of specific atom types:
 
+```
 atom_type_gaussian(t1=,t2=,o=0,_w=0,_c=8)	guassian potential between specified atom types
 atom_type_linear(t1=,t2=,g=0,_b=0,_c=8)	linear potential between specified atom types
 atom_type_quadratic(t1=,t2=,o=0,_c=8)	quadratic potential between specified atom types
 atom_type_inverse_power(t1=,t2=,i=0,_^=100,_c=8)	inverse power potential between specified atom types
+```
 
-Use --print_atom_types to see all available atom types. Note that hydrogens
+Use `--print_atom_types` to see all available atom types. Note that hydrogens
 are always ignored despite having atom types.
 
 Note that these are all symmetric - you do not need to specify a term for
 (t1,t2) and (t2,t1) (doing so will just double the value of the potential).
 
 Example:  Faking covalent docking.  Consider this custom scoring function:
+
+```
 -0.035579    gauss(o=0,_w=0.5,_c=8)
 -0.005156    gauss(o=3,_w=2,_c=8)
 0.840245     repulsion(o=0,_c=8)
@@ -283,6 +298,7 @@ Example:  Faking covalent docking.  Consider this custom scoring function:
 -0.587439    non_dir_h_bond(g=-0.7,_b=0,_c=8)
 1.923        num_tors_div
 -100.0       atom_type_gaussian(t1=Chlorine,t2=Sulfur,o=0,_w=3,_c=8)
+```
 
 All but the last term are the default Vina scoring function.  That last
 term applies a very strong guassian potential between Cl and S.  In the
