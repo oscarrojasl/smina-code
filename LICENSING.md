@@ -51,6 +51,7 @@ results are unchanged from upstream smina.
 | `src/server/MinimizationQuery.cpp`, `src/server/QueryManager.{cpp,h}`, `src/server/server.cpp` | Replace `boost::unordered_*` with `std::unordered_*`; use `boost::shared_mutex` consistently; fix a misnamed `boost::unique_lock` variable |
 | `src/eigen/`, `src/lib/Eigen` | Deleted — an unused vendored copy of Eigen 3.3.4 and its symlink |
 | `src/lib/tmp` | Deleted — a stray duplicate of `weighted_terms.h` |
+| `LICENSE.GNU` → `LICENSE` | Renamed to the conventional filename so the references in this file and `README` resolve; the GPLv2 text is unchanged |
 | `README`, `.gitignore`, `.gitattributes` | Documentation and repository hygiene |
 
 ## Citation
