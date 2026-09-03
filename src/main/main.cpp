@@ -1,3 +1,10 @@
+/*
+ * Modified 2026 by Oscar Rojas (smina modernized-build fork):
+ * dropped the removed boost/filesystem/convenience.hpp include and
+ * replaced boost::filesystem::extension with path(...).extension().
+ * See LICENSING.md.
+ */
+
 #include <boost/program_options.hpp>
 
 #include <iostream>

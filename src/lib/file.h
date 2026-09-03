@@ -20,6 +20,12 @@
 
 */
 
+/*
+ * Modified 2026 by Oscar Rojas (smina modernized-build fork):
+ * boost::filesystem::extension/basename replaced with the modern path
+ * member API.  See LICENSING.md.
+ */
+
 #ifndef VINA_FILE_H
 #define VINA_FILE_H
 

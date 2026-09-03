@@ -5,6 +5,11 @@
  *      Author: dkoes
  */
 
+/*
+ * Modified 2026 by Oscar Rojas (smina modernized-build fork):
+ * boost::unordered_* replaced with std::unordered_*.  See LICENSING.md.
+ */
+
 #include "QueryManager.h"
 #include "Reorienter.h"
 #include "MinimizationQuery.h"

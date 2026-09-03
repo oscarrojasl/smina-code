@@ -10,6 +10,12 @@
  * https://github.com/toastedcrumpets/DynamO/blob/master/src/magnet/magnet/math/spline.hpp
  */
 
+/*
+ * Modified 2026 by Oscar Rojas (smina modernized-build fork):
+ * Eigen is included through its installed package rather than the
+ * in-tree copy that this fork deleted.  See LICENSING.md.
+ */
+
 #include "common.h"
 #include <Eigen/Core>
 #include <Eigen/Dense>

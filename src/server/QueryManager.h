@@ -5,6 +5,11 @@
  *      Author: dkoes
  */
 
+/*
+ * Modified 2026 by Oscar Rojas (smina modernized-build fork):
+ * boost::unordered_* replaced with std::unordered_*.  See LICENSING.md.
+ */
+
 #ifndef QUERYMANAGER_H_
 #define QUERYMANAGER_H_
 

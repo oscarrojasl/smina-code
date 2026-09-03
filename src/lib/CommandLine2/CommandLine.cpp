@@ -16,6 +16,13 @@
 //
 //===----------------------------------------------------------------------===//
 
+/*
+ * Modified 2026 by Oscar Rojas (smina modernized-build fork):
+ * boost::unordered_map/unordered_set replaced with the std equivalents
+ * and boost::filesystem calls explicitly qualified.  See LICENSING.md.
+ * The NCSA license this file refers to is in LICENSE.NCSA.
+ */
+
 #include "CommandLine.h"
 #include <cerrno>
 #include <cstdlib>

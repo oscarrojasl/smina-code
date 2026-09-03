@@ -1,3 +1,7 @@
+# Build system modernized 2026 by Oscar Rojas for the smina modernized-build
+# fork (C++17, current Boost/Eigen/OpenBabel detection).  Licensing and the
+# full list of changes are in LICENSING.md.
+
 cmake_minimum_required(VERSION 3.10)
 project(smina)
 

@@ -6,6 +6,11 @@
 // Description : Minimization server
 //============================================================================
 
+/*
+ * Modified 2026 by Oscar Rojas (smina modernized-build fork):
+ * shared_mutex usage standardized on boost::shared_mutex and a misnamed
+ * boost::unique_lock variable fixed.  See LICENSING.md.
+ */
 
 #include "server_common.h"
 #include "CommandLine2/CommandLine.h"
