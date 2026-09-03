@@ -149,7 +149,7 @@ void QueryManager::getCounts(unsigned& active, unsigned& inactive,
 
 QueryPtr QueryManager::get(unsigned qid)
 {
-	boost::unique_lock<boost::mutex>(mu);
+	boost::unique_lock<boost::mutex> L(mu);
 
 	if (queries.count(qid) == 0)
 		return QueryPtr();
@@ -164,7 +164,7 @@ QueryPtr QueryManager::get(unsigned qid)
 //remove stale queries
 unsigned QueryManager::purgeOldQueries()
 {
-	boost::unique_lock<boost::mutex>(mu);
+	boost::unique_lock<boost::mutex> L(mu);
 	vector<unsigned> toErase;
 	for (QueryMap::iterator itr = queries.begin(), end = queries.end(); itr
 			!= end; itr++)
