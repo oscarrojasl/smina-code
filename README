@@ -1,4 +1,24 @@
-smina is a fork of Autodock Vina (http://vina.scripps.edu/) that 
+smina -- modernized build
+=========================
+
+This repository is a fork of smina (https://sourceforge.net/projects/smina/),
+which is itself a fork of AutoDock Vina 1.1.2 (http://vina.scripps.edu/).
+
+Original smina targeted an old stack no longer configures or compiles
+against current compilers and libraries. This fork brings the build up to a
+current toolchain -- on modern macOS as well as on current Linux -- while leaving
+the docking and scoring code untouched. There are no functional changes: results are the same
+as original smina.
+
+All four targets (smina, server, fromsmina, tosmina) build clean from a clean
+install of macOS Tahoe 26.6.2, of Fedora 44, and of Ubuntu 26 LTS; see below
+for the packages each needs.
+
+======================================================================
+Original smina README follows.
+======================================================================
+
+smina is a fork of Autodock Vina (http://vina.scripps.edu/) that
 focuses on improving scoring and minimization.  Changes from the
 standard Vina (version 1.1.2) include:
  -comprehensive support for ligand molecular formats (via OpenBabel)*
