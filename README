@@ -20,6 +20,66 @@ supported by The Scripps Research Institute, the University of Pittsburgh,
 or the authors of smina or AutoDock Vina.  Please report problems with this
 fork here, not to the upstream projects.
 
+If you use smina, please cite the original paper:
+http://pubs.acs.org/doi/abs/10.1021/ci300604z
+
+No pre-built binaries are distributed here -- build from source as described
+below.
+
+
+Building on Linux
+-----------------
+Verified on a clean Fedora 44 install with the @development-tools and
+@c-development groups.  On top of those, the required packages are:
+
+```
+dnf install cmake boost boost-devel eigen3 openbabel openbabel-devel
+```
+
+Then:
+
+```
+git clone https://github.com/oscarrojasl/smina-code.git smina-code
+cd smina-code
+mkdir -p build && cd build
+cmake ..
+cmake --build . -j"$(nproc)"
+./smina --version
+```
+
+On Debian and Ubuntu the equivalent packages are:
+
+```
+apt install git cmake build-essential libboost-all-dev libopenbabel-dev libeigen3-dev
+```
+
+Verified on a clean Ubuntu 26 LTS install with build-essential already
+present.
+
+
+Building on macOS
+-----------------
+Verified on a clean macOS Tahoe 26.6.2 install with the Xcode command line
+tools and Homebrew.  The required Homebrew packages are:
+
+```
+brew install cmake boost eigen open-babel
+```
+
+(cmake, boost, eigen and open-babel are the only ones needed; everything else
+comes from the Xcode command line tools.)
+
+Then:
+
+```
+git clone https://github.com/oscarrojasl/smina-code.git smina-code
+cd smina-code
+mkdir -p build && cd build
+cmake ..
+cmake --build . -j"$(sysctl -n hw.ncpu)"
+./smina --version
+```
+
 License
 -------
 smina is a combination of Apache-2.0 code (the AutoDock Vina core, (c) The
@@ -31,8 +91,6 @@ under the GNU General Public License version 2 -- see LICENSE.
 LICENSING.md has the full component-by-component breakdown, the third-party
 license files, and the list of every file this fork modifies.
 
-If you use smina, please cite the original paper:
-http://pubs.acs.org/doi/abs/10.1021/ci300604z
 
 ======================================================================
 Original smina README follows.
