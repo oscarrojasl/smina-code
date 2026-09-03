@@ -470,11 +470,12 @@ static void ExpandResponseFiles(unsigned argc, char** argv,
     char *arg = argv[i];
 
     if (arg[0] == '@') {
-    	filesystem::path respFile(++arg);
+    	boost::filesystem::path respFile(++arg);
 
       // Check that the response file is not empty (mmap'ing empty
       // files can be problematic).
-      if (filesystem::exists(respFile) && filesystem::file_size(respFile) > 0) {
+      if (boost::filesystem::exists(respFile)
+          && boost::filesystem::file_size(respFile) > 0) {
 
         // mmap the response file into memory.
     	  iostreams::mapped_file_source respFilePtr(respFile.string());
@@ -520,7 +521,7 @@ void cl::ParseCommandLineOptions(int argc, char **argv,
   // Copy the program name into ProgName, making sure not to overflow it.
   if(ProgramName == DEFAULT_PROGRAM_NAME)
   {
-	  ProgramName = filesystem::path(argv[0]).filename().string();
+	  ProgramName = boost::filesystem::path(argv[0]).filename().string();
   }
 
   if(Overview)
@@ -1172,5 +1173,3 @@ void cl::SetHelpMessage(const char *programname, const char *overview)
 void cl::PrintHelpMessage() {
   NormalPrinter.print();
 }
-
-

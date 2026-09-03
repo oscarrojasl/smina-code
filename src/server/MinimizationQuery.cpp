@@ -280,7 +280,7 @@ void MinimizationQuery::thread_minimize(MinimizationQuery* q)
 				}
 
 				//add computed results
-				boost::lock_guard<shared_mutex> lock(q->results_mutex);
+				boost::unique_lock<boost::shared_mutex> lock(q->results_mutex);
 				for (unsigned i = 0, n = results.size(); i < n; i++)
 				{
 					results[i]->position = q->allResults.size();
