@@ -14,6 +14,25 @@ All four targets (smina, server, fromsmina, tosmina) build clean from a clean
 install of macOS Tahoe 26.6.2, of Fedora 44, and of Ubuntu 26 LTS; see below
 for the packages each needs.
 
+This is an UNOFFICIAL fork.  It is not affiliated with, endorsed by, or
+supported by The Scripps Research Institute, the University of Pittsburgh,
+or the authors of smina or AutoDock Vina.  Please report problems with this
+fork here, not to the upstream projects.
+
+License
+-------
+smina is a combination of Apache-2.0 code (the AutoDock Vina core, (c) The
+Scripps Research Institute), GPLv2 code (PDBQTUtilities, derived from Open
+Babel), and NCSA-licensed code (CommandLine2, adapted from LLVM), and it links
+against Open Babel 3 (GPLv2).  The work as a whole is therefore distributed
+under the GNU General Public License version 2 -- see LICENSE.
+
+LICENSING.md has the full component-by-component breakdown, the third-party
+license files, and the list of every file this fork modifies.
+
+If you use smina, please cite the original paper:
+http://pubs.acs.org/doi/abs/10.1021/ci300604z
+
 ======================================================================
 Original smina README follows.
 ======================================================================
