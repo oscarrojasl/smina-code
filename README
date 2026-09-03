@@ -39,8 +39,8 @@ dnf install cmake boost boost-devel eigen3 openbabel openbabel-devel
 Then:
 
 ```
-git clone https://github.com/oscarrojasl/smina-code.git smina-code
-cd smina-code
+git clone https://github.com/oscarrojasl/smina-modern-build.git smina-modern-build
+cd smina-modern-build
 mkdir -p build && cd build
 cmake ..
 cmake --build . -j"$(nproc)"
@@ -72,8 +72,8 @@ comes from the Xcode command line tools.)
 Then:
 
 ```
-git clone https://github.com/oscarrojasl/smina-code.git smina-code
-cd smina-code
+git clone https://github.com/oscarrojasl/smina-modern-build.git smina-modern-build
+cd smina-modern-build
 mkdir -p build && cd build
 cmake ..
 cmake --build . -j"$(sysctl -n hw.ncpu)"
