@@ -9,7 +9,6 @@
 #include <iterator>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/filesystem/exception.hpp>
-#include <boost/filesystem/convenience.hpp> // filesystem::basename
 #include <boost/thread/thread.hpp> // hardware_concurrency // FIXME rm ?
 #include <boost/lexical_cast.hpp>
 #include <boost/assign.hpp>
@@ -780,7 +779,7 @@ static void create_init_model(const std::string& rigid_name,
 			{
 				throw usage_error("Cannot mix -flex option with -flexres or -flexdist options.");
 			}
-			if (boost::filesystem::extension(rigid_name) != ".pdbqt")
+			if (boost::filesystem::path(rigid_name).extension() != ".pdbqt")
 			{
 				throw usage_error("Cannot use -flex option with non-PDBQT receptor.");
 			}
@@ -788,7 +787,7 @@ static void create_init_model(const std::string& rigid_name,
 			ifile flexin(flex_name);
 			initm = parse_receptor_pdbqt(rigid_name, rigidin, flex_name, flexin);
 		}
-		else if(!finfo.hasContent() && boost::filesystem::extension(rigid_name) == ".pdbqt")
+		else if(!finfo.hasContent() && boost::filesystem::path(rigid_name).extension() == ".pdbqt")
 		{
 			//compatibility mode - read pdbqt directly with no openbabel shenanigans
 			ifile rigidin(rigid_name);

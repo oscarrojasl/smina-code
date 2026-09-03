@@ -83,10 +83,10 @@ public:
 		while(!empty()) pop();
 		uncompressed_infile.close();
 
-		std::string fileext = extension(name);
+		std::string fileext = name.extension().string();
 		if(fileext == ".gz")
 		{
-			fileext = extension(basename(name));
+			fileext = name.stem().extension().string();
 			iszipped = true;
 		}
 
@@ -138,11 +138,11 @@ public:
 		if(!uncompressed_outfile)
 			throw file_error(name,false);
 
-		std::string ext = boost::filesystem::extension(name);
+		std::string ext = name.extension().string();
 		//should we gzip?
 		if (ext == ".gz")
 		{
-			ext = extension(basename(name));
+			ext = name.stem().extension().string();
 			push(boost::iostreams::gzip_compressor());
 		}
 		push(uncompressed_outfile);
