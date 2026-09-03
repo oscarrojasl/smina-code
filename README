@@ -80,6 +80,11 @@ cmake --build . -j"$(sysctl -n hw.ncpu)"
 ./smina --version
 ```
 
+*Note:* OpenBabel3 is required -- Open Babel 2 will not work.  Eigen is no
+longer vendored, so a system Eigen must be installed, and the compiler must
+support C++17.  On distributions old enough to ship neither, original smina is
+the better starting point.
+
 License
 -------
 smina is a combination of Apache-2.0 code (the AutoDock Vina core, (c) The
