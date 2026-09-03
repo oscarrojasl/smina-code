@@ -12,7 +12,7 @@
 #include "non_cache.h"
 #include "quasi_newton.h"
 #include <boost/archive/binary_iarchive.hpp>
-#include <boost/unordered_set.hpp>
+#include <unordered_set>
 #include <boost/timer/timer.hpp>
 
 using namespace boost;
@@ -384,7 +384,7 @@ unsigned MinimizationQuery::loadResults(const MinimizationFilters& filter,
 	//uniquification, take best after sort
 	if (filter.unique)
 	{
-		unordered_set<string> seen;
+		std::unordered_set<string> seen;
 		vector<Result*> tmpres; tmpres.reserve(results.size());
 
 		for(unsigned i = 0, n = results.size(); i < n; i++)

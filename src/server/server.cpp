@@ -28,7 +28,7 @@ cl::opt<unsigned> minimizationThreads("threads",
 		cl::init(max(1U, boost::thread::hardware_concurrency() / 2)));
 cl::opt<string> logfile("logfile", cl::desc("file for logging information"));
 
-typedef unordered_map<string, boost::shared_ptr<Command> > cmd_map;
+typedef std::unordered_map<string, boost::shared_ptr<Command> > cmd_map;
 
 static void process_request(stream_ptr s, cmd_map& cmap)
 {
@@ -85,8 +85,8 @@ int main(int argc, char *argv[])
 			("getstatus", boost::shared_ptr<Command>(new GetStatus(queries, log)));
 
 	//start listening
-	io_service io_service;
-	tcp::acceptor a(io_service, tcp::endpoint(tcp::v4(), port));
+	io_context io;
+	tcp::acceptor a(io, tcp::endpoint(tcp::v4(), port));
 
 	cout << "Listening on port " << port << "\n";
 
@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
 	while (true)
 	{
 		stream_ptr s = stream_ptr(new tcp::iostream());
-		a.accept(*s->rdbuf());
+		a.accept(s->socket());
 		boost::thread t(bind(process_request, s, commands));
 	}
 
