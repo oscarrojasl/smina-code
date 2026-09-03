@@ -11,8 +11,8 @@
  */
 
 #include "common.h"
-#include "Eigen/Core"
-#include "Eigen/Dense"
+#include <Eigen/Core>
+#include <Eigen/Dense>
 
 typedef fl fltype;
 struct SplineData
